@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import Home from './components/Home/Home';import AboutUs from './components/AboutUs/AboutUs';
 import Contract from './components/Contract/Contract';
-import Clients from './components/Users/Users.jsx';
 import Users from './components/Users/Users.jsx';
+import UserDetails from './components/UserDetails/UserDetails.jsx';
 ;
 
 const router = createBrowserRouter([
@@ -29,6 +29,11 @@ const router = createBrowserRouter([
         path : '/users',
         loader : () => fetch('https://jsonplaceholder.typicode.com/users'),
         element : <Users></Users>
+      },
+      {
+        path : '/user/:userId',
+        loader:({params}) =>fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`) , 
+        element : <UserDetails></UserDetails>
       }
     ]
   }, 
